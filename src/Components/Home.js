@@ -1,14 +1,16 @@
 import { default as React } from 'react';
 import { CartState } from '../context/Context';
+import Filters from './Filters';
 import SingleProduct from './SingleProduct';
 
 
 const Home = () => {
     const { state:{products} } = CartState()
-    console.log(products)
+    // console.log(products)
 
     return (
         <div>
+            <Filters />
             <div class="flex flex-col">
                 <div>
                     <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -26,7 +28,11 @@ const Home = () => {
                                             Stock
                                         </th>
                                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                                            price
+                                            Rating
+                                        </th>
+                                        <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                            Price
+                                            
                                         </th>
                                         <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                                             Buy
