@@ -20,24 +20,3 @@ export default Context;
 export const CartState = () => {
     return useContext(Cart);
 }
-
-
-
- //===============================================================
-    // let allData = [];
-    // const getProducts = async () => {
-    //     const res = await fetch('https://dummyjson.com/products')
-    //     const data = await res.json()
-    //     return allData.push(data.products)
-    // }
-    //===================================================
-
-//     const getProducts =  () => {
-//         let allData
-//            fetch('https://dummyjson.com/products')
-//                .then(response => response.json())
-//                .then(data => {
-//                    allData = data.products
-//                })
-//        }
-// getProducts()

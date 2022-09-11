@@ -80,7 +80,7 @@ const Filters = () => {
                                 }
                                 {
                                 cart.length > 0 ?
-                                <Link to='/' className='bg-gray-600 py-3 text-white text-center'>Go to cart</Link>
+                                <Link to='/checkout' className='bg-gray-600 py-3 text-white text-center'>Go to cart</Link>
                                 :
                                 <span>Cart is empty</span> 
                                 }
@@ -97,9 +97,3 @@ const Filters = () => {
 };
 
 export default Filters;
-{/* <button
-                            type="button"
-                            data-mdb-ripple="true"
-                            data-mdb-ripple-color="light"
-                            class="inline-block px-6 py-2 bg-blue-600 text-white font-medium text-xs  uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                        >Add to cart</button> */}

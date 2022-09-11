@@ -54,13 +54,3 @@ const SingleProduct = ({ prod }) => {
 
 export default SingleProduct;
 
-// onClick = {() => {
-//     dispatch(
-//         {
-//             type: "CHECK_TO_ADDCART",
-//             payload: prod,
-//         }
-//     )
-// }}
-
-{/* <input class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" value="" id="flexCheckDefault" disabled /> */}
