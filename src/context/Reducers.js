@@ -23,3 +23,39 @@ export const cartReducer = (state, action) => {
            return state;
     }
 }
+
+export const filterReducer = (state, action) => {
+    switch (action.type) {
+        case 'BY_CATEGORY':
+            
+            return {
+                ...state,
+                byCategory: action.payload
+                    // state.products.filter(cat => cat.category === action.payload) 
+            }
+        case 'BY_BRAND':
+            
+            return {
+                ...state,
+                byBrand : action.payload
+            }
+        case 'BY_SEARCH':
+            
+            return {
+                ...state,
+                bySearch : action.payload
+            }
+        case 'RESET':
+            
+            return {
+                byCategory: "",
+                byBrand: "",
+                reset: '',
+                bySearch: ""
+            }
+    
+        default:
+            break;
+    }
+    
+}

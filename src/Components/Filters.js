@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { CartState } from '../context/Context';
 
 const Filters = () => {
-    const { state: { products, cart }, dispatch } = CartState()
-    console.log(cart)
+    const { state: { products, cart }, dispatch, filterState, filterDispatch } = CartState()
+    console.log(filterState)
     return (
         <div className='mx-12 mt-12'>
             <div className='flex justify-between'>
@@ -14,7 +14,14 @@ const Filters = () => {
 
                     <div class="mb-3 xl:w-36 mr-3">
                             {/* filter by category */}
-                        <select class="form-select appearance-none block w-full px-3 text-base py-1.5 font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                        <select
+                            onChange={(e) => {
+                                filterDispatch({
+                                    type: 'BY_CATEGORY',
+                                    payload: e.target.value
+                                });
+                        }}
+                            class="form-select appearance-none block w-full px-3 text-base py-1.5 font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
                             <option value="smartphones">smartphones</option>
                             <option value="laptops">laptops</option>
                             <option value="fragrances">fragrances</option> 
@@ -25,12 +32,17 @@ const Filters = () => {
                     </div>
                     {/* Filter by Brand */}
                     <div class="mb-3 xl:w-36">
-                        <select class="form-select appearance-none block w-full px-3 text-base py-1.5 font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-                            {/* {
-                                products.map(ct => <option value="1">{ct.category}</option> )
-                            } */}
-                            <option value="smartphones">Apple</option>
-                            <option value="laptops">Samsung</option>
+                        <select
+                            onChange={(e) => {
+                                filterDispatch({
+                                    type: 'BY_BRAND',
+                                    payload: e.target.value
+                                });
+                            }}
+                            class="form-select appearance-none block w-full px-3 text-base py-1.5 font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+                            
+                            <option value="smartphones">apple</option>
+                            <option value="laptops">samsung</option>
                             <option value="fragrances">OPPO</option> 
                             <option value="skincare">Huawei</option> 
                             <option value="groceries">Microsoft Surface</option> 
@@ -41,6 +53,11 @@ const Filters = () => {
                     {/* Reset Button */}
                     <div class="space-x-2 my-1 ml-2">
                         <button
+                            onClick={() => {
+                                filterDispatch({
+                                    type: 'RESET'
+                                })
+                            }}
                             type="button"
                             data-mdb-ripple="true"
                             data-mdb-ripple-color="light"
@@ -53,7 +70,14 @@ const Filters = () => {
                 <div>
                     <div class="mb-3 xl:w-48">
                         <div class="input-group relative flex flex-wrap items-stretch w-full mb-4">
-                            <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" />
+                            <input
+                                onChange={(e) => {
+                                    filterDispatch({
+                                        type: 'BY_SEARCH',
+                                        payload: e.target.value
+                                    });
+                                }}
+                                type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" />
                         </div>
                     </div>
                     {/* Dropdown */}

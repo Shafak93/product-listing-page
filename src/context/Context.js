@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import products from './data.json';
-import { cartReducer } from './Reducers';
+import { cartReducer, filterReducer } from './Reducers';
 
 const Cart =  createContext()
 const Context = ({ children }) => {
@@ -9,9 +9,15 @@ const Context = ({ children }) => {
         products: products,
         cart : []
     })
+    const [filterState, filterDispatch] = useReducer(filterReducer, {
+        byCategory: "",
+        byBrand: "",
+        reset: '',
+        bySearch : ""
+    })
     // console.log(state)
     return (
-        <Cart.Provider value={{ state, dispatch}}>{children}</Cart.Provider>
+        <Cart.Provider value={{ state, dispatch, filterState, filterDispatch }}>{children}</Cart.Provider>
     );
 };
 

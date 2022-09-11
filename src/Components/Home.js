@@ -5,9 +5,21 @@ import SingleProduct from './SingleProduct';
 
 
 const Home = () => {
-    const { state:{products} } = CartState()
-    // console.log(products)
-
+    const { state: { products }, filterState: { byCategory, byBrand, bySearch }, filterDispatch } = CartState()
+  
+    const filterFunc = () => {
+        let filterProducts = products;
+        if (byCategory) {
+            filterProducts = filterProducts.filter((prod)=> prod.category.toLowerCase().includes(byCategory))
+        }
+        if (byBrand) {
+            filterProducts = filterProducts.filter((prod) => prod.brand.includes(byBrand))
+        }
+        if (bySearch) {
+            filterProducts = filterProducts.filter((prod) => prod.title.toLowerCase().includes(bySearch))
+        }
+        return filterProducts
+    }
     return (
         <div>
             <Filters />
@@ -41,7 +53,7 @@ const Home = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        products.map(prod => <SingleProduct prod ={prod} key={prod.id}></SingleProduct> )
+                                        filterFunc().map(prod => <SingleProduct prod ={prod} key={prod.id}></SingleProduct> )
                                     }
                                     
                                 </tbody>
